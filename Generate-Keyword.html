@@ -1,0 +1,112 @@
+<p><h1 class='post-title entry-title'>
+Auto Generate Keyword Link
+</h1>
+<style>
+  .link {
+              float: left;
+              width: 640px;
+              min-height: 100px;
+              outline: none;
+              resize: none;
+              border: 1px solid grey;
+              }
+
+  .katakunci {
+              float: left;
+              width: 640px;
+              min-height: 200px;
+              outline: none;
+              resize: none;
+              border: 1px solid grey;
+              }
+  .hasil {
+              float: left;
+              width: 640px;
+              min-height: 200px;
+              outline: none;
+              resize: none;
+              border: 1px solid grey;
+              }
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 8px;
+  }
+</style>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <p><b>Enter URL:</b></p>
+
+        <textarea class="link" id="url" name="link" type="url"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <br />
+        <p><b>Enter Keywords:</b></p>
+
+        <textarea
+          class="katakunci"
+          id="kata"
+          name="kata"
+          rowspan="5"
+        ></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center;">
+        <br />
+        <a
+          class="button"
+          href="javascript:void(0);"
+          onclick="proses()"
+          style="color:white;text-decoration: auto;"
+          >Proses</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <br />
+        <p><b>Output:</b></p>
+        <textarea class="hasil" id="output"></textarea>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script type="text/javascript">
+  function proses() {
+            var awal = "<a href="+'"';
+            var akhir= '"'+"></a>";
+            var bot  = "search?q=";
+  	var link = document.getElementById("url").value;
+  	var kata = document.getElementById("kata").value;
+  	var plus = kata.split(' ').join('+');
+  	var cek = link.substr(link.length - 1);
+  	var slash = plus.split('\n');
+  	var hasil = [];
+  	for (var i = 0; i < slash.length; i++) {
+  		if (cek == '/') {
+  			hasil += awal+link+bot+slash[i]+akhir+'\n';
+  		}else{
+  			hasil += awal+link+'/'+bot+slash[i]+akhir+'\n';
+  		}
+  	}
+  	console.log(hasil);
+  	document.getElementById("output").value = hasil;
+  }
+</script>
+
+<p><br /></p>
+<h2 style="text-align: left;">What is Auto Generate Keyword Link?</h2></p>
+<div class='clear'></div>
